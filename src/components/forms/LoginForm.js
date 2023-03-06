@@ -8,10 +8,13 @@ export default function SideForm(props) {
     return (
     <form className="side-form">
             <h3> Login </h3>
+
+            <h6> UserID </h6>
             <input  type="text" 
                     onChange={ e=>setLoginID(e.target.value) }
                     value={loginID} />
 
+            <h6> Password </h6>
             <input  type="password"
                     onChange={ e=>setLoginPass(e.target.value) }
                     value={loginPass} />

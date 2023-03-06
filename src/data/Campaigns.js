@@ -5,7 +5,7 @@ var campaigns = [
         "keywords": "business",
         "bidAmount": 21,
         "campaignFund": 4000,
-        "status": "active",
+        "status": "on",
         "town": "Krakow",
         "radius": 90
     },
@@ -15,7 +15,7 @@ var campaigns = [
         "keywords": "sport, football ",
         "bidAmount": 25,
         "campaignFund": 9000,
-        "status": "active",
+        "status": "on",
         "town": "London",
         "radius": 20
     },
@@ -25,7 +25,7 @@ var campaigns = [
         "keywords": "PC, games",
         "bidAmount": 40,
         "campaignFund": 12000,
-        "status": "active",
+        "status": "on",
         "town": "Warsaw",
         "radius": 100
     },
@@ -35,7 +35,7 @@ var campaigns = [
         "keywords": "food, kids ",
         "bidAmount": 40,
         "campaignFund": 12000,
-        "status": "active",
+        "status": "on",
         "town": "Warsaw",
         "radius": 100
     },
@@ -55,7 +55,7 @@ var campaigns = [
         "keywords": "food, tools ",
         "bidAmount": 10,
         "campaignFund": 1200,
-        "status": "active",
+        "status": "off",
         "town": "Amsterdam",
         "radius": 10
     }

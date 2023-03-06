@@ -1,6 +1,6 @@
-import './sections.css'
-import ShowMoreIcon  from '../images/down-arrow.png'
-import AddIcon from '../images/more.png'
+import '../../styles/sections.css'
+import ShowMoreIcon  from '../../images/down-arrow.png'
+import AddIcon from '../../images/more.png'
 import SectionTable from './SectionTable'
 import {useState} from 'react'
 
@@ -29,9 +29,10 @@ export default function SingleSection(props) {
             </div>
         </div >
         <div style={{ display: visable && props.isLoggedIn ? 'block' : 'none' }}>
-            <SectionTable   cells={props.cells}     rows={props.rows} 
-                            setForm={props.setForm} editNumber={props.editNumber}
-                            activeID = {props.activeID}   setActiveID = {props.setActiveID}
+            <SectionTable   cells = {props.cells}     rows = {props.rows} 
+                            setForm = {props.setForm} editNumber = {props.editNumber}
+                            activeID = {props.activeID} setActiveID = {props.setActiveID}
+                            updateDB = {props.updateDB} selectedForm = {props.selectedForm}
                             />
         </div>
     </div>        

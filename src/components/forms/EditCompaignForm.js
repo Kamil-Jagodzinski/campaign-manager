@@ -2,10 +2,9 @@ import towns_DB from '../../data/Towns'
 import {useState} from 'react'
 
 export default function EditCompaignForm(props) {
-        console.log( props.compID )
     let copy_db = [...props.Campaigns_db]
+    
     let idx = copy_db.findIndex( (camp) => camp.ID === Number(props.ID) ) 
-
     const [campaign, setCampaign] = useState( copy_db[idx].campaign )
     const [keywords, setKeywords] = useState( copy_db[idx].keywords )
     const [bidAmount, setBidAmount] = useState( copy_db[idx].bidAmount )
@@ -41,10 +40,8 @@ export default function EditCompaignForm(props) {
             <h6> Campaign status  </h6>
             <select name="status" id="status" value={status}
                     onChange={ e=>setStatus(e.target.value) }>
-                <option value="Active" key='Active'>  Active </option>
+                <option value="On" key='On'>  On </option>
                 <option value="Off" key='Off'> Off </option>
-                <option value="Waiting" key='Waiting'> Waiting </option>
-                <option value="Suspended" key='Suspended'> Suspended </option>
             </select>
 
             <h6> Town </h6>
@@ -68,15 +65,22 @@ export default function EditCompaignForm(props) {
 
     function handleSubmit(event) {
         event.preventDefault()
-        console.log( copy_db )
-        copy_db[idx].campaign = campaign
-        copy_db[idx].keywords = keywords
-        copy_db[idx].bidAmount = bidAmount
-        copy_db[idx].campaignFund = campaignFund
-        copy_db[idx].status = status
-        copy_db[idx].town = town
-        copy_db[idx].radius = radius
-        props.setCampaigns_db(copy_db)
-        console.log('done')
+        let isComplete = true
+
+        campaign.split(" ").join("").length > 0 ? copy_db[idx].campaign = campaign : isComplete = false
+        keywords.split(" ").join("").length > 0 ? copy_db[idx].keywords = keywords : isComplete = false
+        bidAmount > 0 ? copy_db[idx].bidAmount = Number(bidAmount) : isComplete = false
+        campaignFund > 0 ? copy_db[idx].campaignFund = Number(campaignFund) : isComplete = false
+        radius >= 0 ? copy_db[idx].radius = Number(radius) : isComplete = false
+
+        if(isComplete){
+                copy_db[idx].status = status
+                copy_db[idx].town = town
+                props.setCampaigns_db(copy_db)
+                props.setForm(0)
+        }
+        else(
+                alert('Empty or not allowed values')
+        )
     }
 }    

@@ -1,5 +1,5 @@
-import './App.css';
-import HeaderBar from './components/HeaderBar'
+import '../src/styles/App.css';
+import HeaderBar from './components/header/HeaderBar'
 import AppContent from './components/AppContent'
 import {useState} from 'react'
 

@@ -1,7 +1,7 @@
-import './header-bar.css'
-import AppIcon from '../images/workshop.png'
-import LoginIcon from '../images/login.png'
-import LogoutIcon from '../images/logout.png'
+import '../../styles/header-bar.css'
+import AppIcon from '../../images/workshop.png'
+import LoginIcon from '../../images/login.png'
+import LogoutIcon from '../../images/logout.png'
 
 export default function HeaderBar(props) {
     console.log('props.user' )

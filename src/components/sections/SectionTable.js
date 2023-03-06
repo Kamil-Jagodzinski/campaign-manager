@@ -1,5 +1,5 @@
-import EditIcon from '../images/edit.png'
-import DeleteIcon from '../images/delete.png'
+import EditIcon from '../../images/edit.png'
+import DeleteIcon from '../../images/delete.png'
 
 
 export default function SectionTable(props) {
@@ -26,7 +26,8 @@ export default function SectionTable(props) {
                   <img src={EditIcon} alt='Edit' /> 
                 </button>
 
-                <button onClick={ () => { handleDelete(row.id)} }>  
+                <button onClick={ (e)=>{ e.preventDefault(); 
+                                        handleDelete(row.ID) } }>   
                   <img src={DeleteIcon} alt='Delete' /> 
                 </button>
               </td>
@@ -38,14 +39,19 @@ export default function SectionTable(props) {
   )
 
   function handleEdit(newActiveID){
-    props.setForm(props.editNumber)
-    props.setActiveID(newActiveID)
-    props.setForm(props.editNumber)
+    if(props.selectedForm === props.editNumber){
+      props.setForm(0)
+    }
+    else{
+      props.setActiveID(newActiveID)
+      props.setForm(props.editNumber)
+    }
   }
 
   function handleDelete(newActiveID){
-    props.setForm(props.editNumber)
-    // props.setForm(props.editNumber)
+    let copy_db = props.rows.filter( (obj)=>{return obj.ID !== newActiveID} )
+    console.log( copy_db )
+    props.updateDB( copy_db )
   }
 
 }

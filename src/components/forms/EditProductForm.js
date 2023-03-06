@@ -4,12 +4,12 @@ export default function EditCompaignForm(props) {
     let copy_db = [...props.Products_db]
     let idx = copy_db.findIndex( (camp) => camp.ID === Number(props.ID) ) 
     const [product, setProduct] = useState( copy_db[idx].product )
-    const [price, setPrice] = useState( copy_db[idx].product )
-    const [campaign, setCampaign] = useState( copy_db[idx].product )
+    const [price, setPrice] = useState( copy_db[idx].price )
+    const [campaign, setCampaign] = useState( copy_db[idx].campaign )
 
     return (
     <form className="side-form">
-            <h3> Edit campaign </h3>
+            <h3> Edit product </h3>
 
             <h6> Product's name </h6>
             <input  type="text" 
@@ -17,7 +17,7 @@ export default function EditCompaignForm(props) {
                     value={product} />
             
             <h6> Product's price </h6>
-            <input  type="number"
+            <input  type="number" min={1}
                     onChange={ e=>setPrice(e.target.value) }
                     value={price} />
 
@@ -32,11 +32,19 @@ export default function EditCompaignForm(props) {
 
     function handleSubmit(event) {
         event.preventDefault()
-        console.log( copy_db )
-        copy_db[idx].product = campaign
-        copy_db[idx].price = price
-        copy_db[idx].campaign = campaign
-        props.setCampaigns_db(copy_db)
-        console.log('done')
+        let isComplete = true
+
+        product.split(" ").join("").length > 0 ? copy_db[idx].product = product : isComplete = false
+        campaign.split(" ").join("").length > 0 ? copy_db[idx].campaign = campaign : isComplete = false
+        price > 0 ? copy_db[idx].price = price : isComplete = false
+        
+        if(isComplete){
+                props.setProducts_db(copy_db)
+                props.setForm(0)
+        }
+        else(
+                alert('Empty or not allowed values')
+        )
     }
 }    
+
