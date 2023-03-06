@@ -5,6 +5,9 @@ export default function EditCompaignForm(props) {
     let copy_db = [...props.Campaigns_db]
     
     let idx = copy_db.findIndex( (camp) => camp.ID === Number(props.ID) ) 
+    console.log( copy_db[idx] )
+    console.log( copy_db )
+    console.log( idx )
     const [campaign, setCampaign] = useState( copy_db[idx].campaign )
     const [keywords, setKeywords] = useState( copy_db[idx].keywords )
     const [bidAmount, setBidAmount] = useState( copy_db[idx].bidAmount )

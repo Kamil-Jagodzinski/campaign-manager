@@ -31,12 +31,12 @@ export default function AddProducrForm(props) {
     function handleSubmit(event) {
         event.preventDefault()
         let copy_db = [...props.Products_db]
-        let newRecord = { ID: Number(copy_db[copy_db.length-1].ID + 1) }
+        let newRecord = { ID: Number( copy_db.length > 0 ? copy_db[copy_db.length-1].ID + 1 : 1 ) }
         let isComplete = true
 
         product.split(" ").join("").length > 0 ? newRecord.product = product : isComplete = false
-        campaign.split(" ").join("").length > 0 ? newRecord.campaign = campaign : isComplete = false
         price > 0 ? newRecord.price = price : isComplete = false
+        campaign.split(" ").join("").length > 0 ? newRecord.campaign = campaign : isComplete = false
         
         if(isComplete){
                 copy_db.push(newRecord)

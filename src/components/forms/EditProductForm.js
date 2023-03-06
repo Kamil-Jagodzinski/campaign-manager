@@ -35,8 +35,8 @@ export default function EditCompaignForm(props) {
         let isComplete = true
 
         product.split(" ").join("").length > 0 ? copy_db[idx].product = product : isComplete = false
-        campaign.split(" ").join("").length > 0 ? copy_db[idx].campaign = campaign : isComplete = false
         price > 0 ? copy_db[idx].price = price : isComplete = false
+        campaign.split(" ").join("").length > 0 ? copy_db[idx].campaign = campaign : isComplete = false
         
         if(isComplete){
                 props.setProducts_db(copy_db)

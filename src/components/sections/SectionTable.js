@@ -1,7 +1,6 @@
 import EditIcon from '../../images/edit.png'
 import DeleteIcon from '../../images/delete.png'
 
-
 export default function SectionTable(props) {
   return (
     <table className="section-table">
@@ -27,6 +26,7 @@ export default function SectionTable(props) {
                 </button>
 
                 <button onClick={ (e)=>{ e.preventDefault(); 
+                                         props.setActiveID( 0 )
                                         handleDelete(row.ID) } }>   
                   <img src={DeleteIcon} alt='Delete' /> 
                 </button>
@@ -52,6 +52,7 @@ export default function SectionTable(props) {
     let copy_db = props.rows.filter( (obj)=>{return obj.ID !== newActiveID} )
     console.log( copy_db )
     props.updateDB( copy_db )
+    props.setForm(0)
   }
 
 }
